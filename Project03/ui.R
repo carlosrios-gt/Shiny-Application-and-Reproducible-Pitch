@@ -9,23 +9,23 @@
 
 library(shiny)
 
-# Define UI for application that draws a histogram
 shinyUI(fluidPage(
 
     # Application title
-    titlePanel("Old Faithful Geyser Data"),
+    titlePanel("EuStockMarkets Data"),
 
-    # Sidebar with a slider input for number of bins
     sidebarLayout(
         sidebarPanel(
-            sliderInput("bins",
-                        "Number of bins:",
-                        min = 1,
-                        max = 50,
-                        value = 30)
+            helpText("This application is to see daily closing prices of major european stock indices from 1991 to 1998. Choose indices you want to see."),
+            checkboxGroupInput("indices", 
+                        label = h3("Select Indices"), 
+                        choices = list("DAX" = 1,
+                                       "SMI" = 2,
+                                       "CAC" = 3,
+                                       "FTSE" = 4),
+                        selected = 1)
         ),
 
-        # Show a plot of the generated distribution
         mainPanel(
             plotOutput("distPlot")
         )
